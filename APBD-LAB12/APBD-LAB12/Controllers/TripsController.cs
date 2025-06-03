@@ -36,6 +36,9 @@ public class TripsController : ControllerBase
     [HttpPost("{idTrip}/clients")]
     public async Task<IActionResult> AddClientToTrip(int idTrip, [FromBody] ClientInputDto clientInputDto)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+        
         try
         {
             await _dbService.AddClientToTrip(idTrip, clientInputDto);

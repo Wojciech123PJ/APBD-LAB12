@@ -92,7 +92,7 @@ public class DbService : IDbService
             if (client.ClientTrips.Any(ct => ct.IdTrip == idTrip))
                 throw new InvalidOperationException("Client  is already registered.");
             
-            throw new ArgumentException($"Client with id {clientInputDto.Pesel} was not found.");
+            throw new ArgumentException($"Client with PESEL {clientInputDto.Pesel} already exists.");
         }
             
         var newClient = new Client {
